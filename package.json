@@ -1,0 +1,14 @@
+{
+  "name": "loglevel-debug",
+  "version": "0.0.1",
+  "description": "Plugin for loglevel which allows disable/enable loggers by DEBUG environment variable",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Vectr Labs Inc.",
+  "license": "MIT",
+  "dependencies": {
+    "loglevel": "^1.4.0"
+  }
+}
