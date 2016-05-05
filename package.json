@@ -1,14 +1,22 @@
 {
   "name": "loglevel-debug",
   "version": "0.0.1",
-  "description": "Plugin for loglevel which allows disable/enable loggers by DEBUG environment variable",
+  "description": "Plugin for JS logger loglevel which allows enable/disable debug output dynamically",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "author": "Vectr Labs Inc.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vectrlabs/loglevel-debug.git"
+  },
   "license": "MIT",
   "dependencies": {
     "loglevel": "^1.4.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "mocha": "^2.4.5"
   }
 }
