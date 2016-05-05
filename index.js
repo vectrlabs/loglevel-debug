@@ -52,13 +52,38 @@ function enabled(name) {
   return false;
 }
 
-function factory(log) {
+/** Plugin itself
+ *
+ * Given a logger name, it returns a logger.
+ * Given a loglevel logger, it replaced it soriginal methodFactory.
+ *
+ * @param {String|Object} nameOrLogger logger name or a loglevel logger.
+ * @return {Object} loglevel logger
+ * @api public
+ */
+function factory(nameOrLogger) {
+  var log;
+  var logLevel;
+
+  if (typeof nameOrLogger === 'string') {
+    log = require('loglevel').getLogger(nameOrLogger);
+  }
+  else if (typeof nameOrLogger === 'object') {
+    log = nameOrLogger;
+  }
+  else {
+    log = require('loglevel');
+  }
   var originalFactory = log.methodFactory;
-  log.methodFactory = function (methodName, logLevel, loggerName) {
+  log.methodFactory = function(methodName, logLevel, loggerName) {
     if(enabled(loggerName)) {
       var rawMethod = originalFactory(methodName, logLevel, loggerName);
+      var prefix = [
+        '[' + methodName.toUpperCase() + ']',
+        loggerName
+      ].join(' ');
       return function(message) {
-        rawMethod(loggerName + ": " + message);
+        return rawMethod(prefix + ' ' + message);
       };
     }
     else {
@@ -73,6 +98,7 @@ function factory(log) {
   else {
     logLevel = log.levels.WARN;
   }
+
   log.setLevel(logLevel);
 
   return log;
