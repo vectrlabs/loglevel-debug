@@ -1,0 +1,13 @@
+{
+  "name": "loglevel-debug",
+  "repo": "vectrlabs/loglevel-debug",
+  "description": "Plugin for loglevel",
+  "version": "0.0.1",
+  "keywords": [
+    "loglevel"
+  ],
+  "main": "dist/loglevel-debug.js",
+  "scripts": [
+    "dist/loglevel-debug.js"
+  ]
+}
