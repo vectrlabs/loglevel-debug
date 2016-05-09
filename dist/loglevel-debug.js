@@ -8,6 +8,9 @@ var currentQueue;
 var queueIndex = -1;
 
 function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
     draining = false;
     if (currentQueue.length) {
         queue = currentQueue.concat(queue);
@@ -392,7 +395,7 @@ function setEnv(key, val) {
  * @api public
  */
 function getMode() {
-  return readEnv('DEBUG') ? 'debug' : 'production';
+  return (names.length > 0 || skips.length >0) ?  'debug' : 'production';
 }
 
 /**
@@ -425,7 +428,7 @@ function enable(namespaces) {
       logger.setLevel(logger.levels.DEBUG);
     }
     else {
-      logger.setLevel(logger.levels.SILENT);
+      logger.setLevel(logger.levels.INFO);
     }
   }
 }
@@ -460,8 +463,8 @@ function enabled(name) {
  * @api public
  */
 function disable() {
-  setEnv('DEBUG', null);
-  enable('');
+  names = [];
+  skips = [];
   for(var k in _loggers) {
     var logger = _loggers[k];
     logger.setLevel(logger.levels.INFO);
@@ -493,22 +496,18 @@ function loglevelDebug(nameOrLogger) {
 
   var originalFactory = log.methodFactory;
   log.methodFactory = function(methodName, logLevel, loggerName) {
-    if(enabled(loggerName)) {
-      var rawMethod = originalFactory(methodName, logLevel, loggerName);
-      var prefix = [
-        '[' + methodName.toUpperCase() + ']',
-        loggerName
-      ].join(' ');
-      return function(message) {
+    var rawMethod = originalFactory(methodName, logLevel, loggerName);
+    var prefix = [
+      '[' + methodName.toUpperCase() + ']',
+      loggerName
+    ].join(' ');
+    return function(message) {
         return rawMethod(prefix + ' ' + message);
-      };
-    }
-    else {
-      return function() {};
     };
   };
 
   if (DEBUG) {
+    disable();
     enable(DEBUG);
   }
   else {

@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "homepage": "https://github.com/vectrlabs/loglevel-debug",
   "authors": [
-    "陳信屹 <hychen@vectr.com>"
+    "Chen Hsin-Yi <hychen@vectr.com>"
   ],
   "description": "Plugin for JS logger loglevel which allows enable/disable debug output dynamically",
   "keywords": [
