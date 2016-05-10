@@ -22,7 +22,8 @@
     "url": "https://github.com/vectrlabs/loglevel-debug.git"
   },
   "keywords": [
-    "loglevel"
+    "loglevel",
+    "loglevel-debug"
   ],
   "author": "Chen Hsin-Yi <hychen@vectr.com>",
   "license": "MIT",

@@ -4,7 +4,8 @@
   "description": "Plugin for loglevel",
   "version": "0.0.1",
   "keywords": [
-    "loglevel"
+    "loglevel",
+    "loglevel-debug"
   ],
   "main": "dist/loglevel-debug.js",
   "scripts": [

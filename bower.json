@@ -8,7 +8,8 @@
   ],
   "description": "Plugin for JS logger loglevel which allows enable/disable debug output dynamically",
   "keywords": [
-    "loglevel"
+    "loglevel",
+    "loglevel-debug"
   ],
   "license": "MIT",
   "ignore": [
