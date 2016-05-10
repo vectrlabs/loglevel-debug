@@ -176,6 +176,7 @@ function loglevelDebug(nameOrLogger) {
     var rawMethod = originalFactory(methodName, logLevel, loggerName);
     var prefix = [
       '[' + methodName.toUpperCase() + ']',
+      new Date(),
       loggerName
     ].join(' ');
     return function(message) {
