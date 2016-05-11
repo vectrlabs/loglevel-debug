@@ -499,10 +499,13 @@ function loglevelDebug(nameOrLogger) {
     var rawMethod = originalFactory(methodName, logLevel, loggerName);
     var prefix = [
       '[' + methodName.toUpperCase() + ']',
+      new Date(),
       loggerName
     ].join(' ');
     return function(message) {
-        return rawMethod(prefix + ' ' + message);
+      var args = Array.prototype.slice.call(arguments);
+      args[0] = prefix + ' ' + args[0];
+      return rawMethod.apply(this, args);
     };
   };
 
