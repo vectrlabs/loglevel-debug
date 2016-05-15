@@ -23,6 +23,7 @@
   },
   "keywords": [
     "loglevel",
+    "loglevel-plugin",
     "loglevel-debug"
   ],
   "author": "Chen Hsin-Yi <hychen@vectr.com>",

@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "keywords": [
     "loglevel",
+    "loglevel-plugin",
     "loglevel-debug"
   ],
   "main": "dist/loglevel-debug.js",
