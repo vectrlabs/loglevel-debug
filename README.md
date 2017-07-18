@@ -102,7 +102,7 @@ loglevelDebug.enable('worker:*');
 
 ```js
 var loglevel = require('loglevel');
-var loglevelDebug = require('loglevel');
+var loglevelDebug = require('loglevel-debug');
 
 loglevelDebug(loglevel);
 
