@@ -165,7 +165,7 @@ function loglevelDebug(nameOrLogger) {
     log = _loggers[nameOrLogger] = require('loglevel').getLogger(nameOrLogger);
   }
   else if (typeof nameOrLogger === 'object') {
-    log = nameOrLogger;
+    log = _loggers[nameOrLogger.name] = nameOrLogger;
   }
   else {
     log = require('loglevel');
